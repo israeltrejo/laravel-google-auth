@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.login')
 
 @section('content')
     <section class="rounded-lg w-full h-screen">
