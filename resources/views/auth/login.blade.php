@@ -12,10 +12,9 @@
                             <h3 class="mb-3 text-4xl font-extrabold text-slate-900">Sign In</h3>
                             <p class="mb-4 text-slate-700">Enter your email and password</p>
                             <a
+                                href="{{ GoogleAuth::getAuthUrl() }}"
                                 class="cursor-pointer flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-slate-900 bg-slate-100 hover:bg-slate-200">
-                                <img class="h-5 mr-2"
-                                    src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-                                    alt="">
+                                <img class="h-5 mr-2" src="{{ URL::to('images/icons/google.png') }}" alt="Google Icon">
                                 Sign in with Google
                             </a>
                             <div class="flex items-center mb-3">
