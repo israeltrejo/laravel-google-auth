@@ -48,16 +48,33 @@ class GoogleAuthController
 
     public function storeGoogleUser($payload)
     {
-        $user = User::firstOrCreate(
-            ['google_id' => $payload['sub']],
-            [
-                'name' => $payload['name'],
-                'email' => $payload['email'],
-                'locale' => $payload['locale'],
-                'picture' => $payload['picture'],
-                'google_id' => $payload['sub'],
-            ]
-        );
+        $googleId = $payload['sub'];
+        $email = $payload['email'];
+        $user = User::firstWhere('google_id', $googleId);
+
+        if ($user)
+        {
+            return $user;
+        }
+
+        $user = User::firstWhere('email', $email);
+
+        if ($user)
+        {
+            $user->google_id = $googleId;
+            $user->password = null;
+            $user->save();
+
+            return $user;
+        }
+
+        $user = User::create([
+            'name' => $payload['name'],
+            'email' => $payload['email'],
+            'locale' => $payload['locale'],
+            'picture' => $payload['picture'],
+            'google_id' => $payload['sub'],
+        ]);
 
         return $user;
     }

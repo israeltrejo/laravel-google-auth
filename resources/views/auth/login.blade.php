@@ -22,6 +22,7 @@
                                 <p class="mx-4 text-slate-400">or</p>
                                 <hr class="h-0 border-b border-solid border-slate-300 dark:border-slate-500 grow">
                             </div>
+                            <x-input-error :messages="$errors->get('email')" class="mb-3 max-w-[24rem]" />
                             <label for="email" class="mb-2 text-sm text-start text-slate-700 dark:text-slate-100">Email</label>
                             <input id="email" required type="email" name="email" placeholder="mail@example.com"
                                 autocomplete="off"
